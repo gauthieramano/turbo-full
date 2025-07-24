@@ -21,7 +21,7 @@ const menuItems = [
   },
 ];
 
-const Footer = () => {
+export default function Footer() {
   return (
     <>
       <div className="container hidden sm:block py-12">
@@ -68,6 +68,4 @@ const Footer = () => {
       </div>
     </>
   );
-};
-
-export default Footer;
+}

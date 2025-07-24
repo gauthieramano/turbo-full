@@ -10,7 +10,7 @@ export interface NoteProps {
   deleteNote: any;
 }
 
-const NoteItem = ({ note, deleteNote }: NoteProps) => {
+export default function NoteItem({ note, deleteNote }: NoteProps) {
   return (
     <div className="flex justify-between items-center h-[74px] bg-[#F9FAFB] py-5 px-5 sm:px-11 gap-x-5 sm:gap-x-10">
       <Link href={`/notes/${note._id}`} className="flex-1">
@@ -24,6 +24,4 @@ const NoteItem = ({ note, deleteNote }: NoteProps) => {
       <DeleteNote deleteAction={() => deleteNote({ noteId: note._id })} />
     </div>
   );
-};
-
-export default NoteItem;
+}

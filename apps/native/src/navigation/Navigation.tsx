@@ -8,7 +8,7 @@ import CreateNoteScreen from "../screens/CreateNoteScreen";
 
 const Stack = createNativeStackNavigator();
 
-const Navigation = () => {
+export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -26,6 +26,4 @@ const Navigation = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-export default Navigation;
+}

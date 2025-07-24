@@ -7,7 +7,7 @@ import { useState } from "react";
 import CreateNote from "./CreateNote";
 import NoteItem from "./NoteItem";
 
-const Notes = () => {
+export default function Notes() {
   const [search, setSearch] = useState("");
 
   const allNotes = useQuery(api.notes.getNotes);
@@ -55,6 +55,4 @@ const Notes = () => {
       <CreateNote />
     </div>
   );
-};
-
-export default Notes;
+}

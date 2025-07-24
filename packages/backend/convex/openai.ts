@@ -6,6 +6,7 @@ import { missingEnvVariableUrl } from "./utils";
 
 export const openaiKeySet = query({
   args: {},
+
   handler: async () => {
     return !!process.env.OPENAI_API_KEY;
   },
@@ -17,23 +18,29 @@ export const summary = internalAction({
     title: v.string(),
     content: v.string(),
   },
+
   handler: async (ctx, { id, title, content }) => {
     const prompt = `Take in the following note and return a summary: Title: ${title}, Note content: ${content}`;
 
     const apiKey = process.env.OPENAI_API_KEY;
+
     if (!apiKey) {
       const error = missingEnvVariableUrl(
         "OPENAI_API_KEY",
         "https://platform.openai.com/account/api-keys",
       );
+
       console.error(error);
+
       await ctx.runMutation(internal.openai.saveSummary, {
         id: id,
         summary: error,
       });
+
       return;
     }
     const openai = new OpenAI({ apiKey });
+
     const output = await openai.chat.completions.create({
       messages: [
         {
@@ -53,6 +60,7 @@ export const summary = internalAction({
     console.log({ messageContent });
 
     const parsedOutput = JSON.parse(messageContent!);
+
     console.log({ parsedOutput });
 
     await ctx.runMutation(internal.openai.saveSummary, {

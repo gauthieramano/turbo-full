@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface Props {
+type Props = {
   isMobile?: boolean;
-}
+};
 
-const Logo = ({ isMobile }: Props) => {
+export default function Logo({ isMobile }: Props) {
   return (
     <Link href={"/"}>
       <div className="flex gap-2 items-center">
@@ -19,6 +19,4 @@ const Logo = ({ isMobile }: Props) => {
       </div>
     </Link>
   );
-};
-
-export default Logo;
+}

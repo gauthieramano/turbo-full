@@ -20,6 +20,7 @@ export default function App() {
     MRegular: require("./src/assets/fonts/Montserrat-Regular.ttf"),
     MLight: require("./src/assets/fonts/Montserrat-Light.ttf"),
   });
+
   if (!loaded) {
     return false;
   }

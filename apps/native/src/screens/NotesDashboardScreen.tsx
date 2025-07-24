@@ -15,7 +15,7 @@ import { useAuth, useUser } from "@clerk/clerk-expo";
 import { api } from "@packages/backend/convex/_generated/api";
 import { useQuery } from "convex/react";
 
-const NotesDashboardScreen = ({ navigation }) => {
+export default function NotesDashboardScreen({ navigation }) {
   const user = useUser();
   const imageUrl = user?.user?.imageUrl;
   const firstName = user?.user?.firstName;
@@ -39,48 +39,48 @@ const NotesDashboardScreen = ({ navigation }) => {
         })
       }
       activeOpacity={0.5}
-      style={styles.noteItem}
+      style={STYLES.noteItem}
     >
-      <Text style={styles.noteText}>{item.title}</Text>
+      <Text style={STYLES.noteText}>{item.title}</Text>
     </TouchableOpacity>
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <View style={STYLES.container}>
+      <View style={STYLES.header}>
         <Image
           source={require("../assets/icons/logo2small.png")} // Replace with your logo image file
-          style={styles.logo}
+          style={STYLES.logo}
         />
       </View>
 
-      <View style={styles.yourNotesContainer}>
+      <View style={STYLES.yourNotesContainer}>
         {/* @ts-ignore, for css purposes */}
-        <Image style={styles.avatarSmall} />
-        <Text style={styles.title}>Your Notes</Text>
+        <Image style={STYLES.avatarSmall} />
+        <Text style={STYLES.title}>Your Notes</Text>
         {imageUrl ? (
-          <Image style={styles.avatarSmall} source={{ uri: imageUrl }} />
+          <Image style={STYLES.avatarSmall} source={{ uri: imageUrl }} />
         ) : (
           <Text>{firstName ? firstName : ""}</Text>
         )}
       </View>
-      <View style={styles.searchContainer}>
+      <View style={STYLES.searchContainer}>
         <Feather
           name="search"
           size={20}
           color="grey"
-          style={styles.searchIcon}
+          style={STYLES.searchIcon}
         />
         <TextInput
           value={search}
           onChangeText={setSearch}
           placeholder="Search"
-          style={styles.searchInput}
+          style={STYLES.searchInput}
         />
       </View>
       {!finalNotes || finalNotes.length === 0 ? (
-        <View style={styles.emptyState}>
-          <Text style={styles.emptyStateText}>
+        <View style={STYLES.emptyState}>
+          <Text style={STYLES.emptyStateText}>
             Create your first note to{"\n"}get started
           </Text>
         </View>
@@ -89,7 +89,7 @@ const NotesDashboardScreen = ({ navigation }) => {
           data={finalNotes}
           renderItem={renderItem}
           keyExtractor={(item) => item._id}
-          style={styles.notesList}
+          style={STYLES.notesList}
           contentContainerStyle={{
             marginTop: 19,
             borderTopWidth: 0.5,
@@ -100,16 +100,16 @@ const NotesDashboardScreen = ({ navigation }) => {
 
       <TouchableOpacity
         onPress={() => navigation.navigate("CreateNoteScreen")}
-        style={styles.newNoteButton}
+        style={STYLES.newNoteButton}
       >
         <AntDesign name="pluscircle" size={20} color="#fff" />
-        <Text style={styles.newNoteButtonText}>Create a New Note</Text>
+        <Text style={STYLES.newNoteButtonText}>Create a New Note</Text>
       </TouchableOpacity>
     </View>
   );
-};
+}
 
-const styles = StyleSheet.create({
+const STYLES = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
@@ -228,5 +228,3 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0.59)",
   },
 });
-
-export default NotesDashboardScreen;

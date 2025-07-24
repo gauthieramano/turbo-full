@@ -18,23 +18,23 @@ export default function InsideNoteScreen({ route, navigation }) {
   const [activeTab, setActiveTab] = useState("original"); // State to manage active tab
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <View style={STYLES.container}>
+      <View style={STYLES.header}>
         <Image
           source={require("../assets/icons/logo2small.png")}
-          style={styles.logo}
+          style={STYLES.logo}
         />
       </View>
 
-      <View style={styles.underHeaderContainer}>
+      <View style={STYLES.underHeaderContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
-            style={styles.arrowBack}
+            style={STYLES.arrowBack}
             source={require("../assets/icons/arrow-back.png")}
           />
         </TouchableOpacity>
 
-        <Text style={styles.title}>{item.title}</Text>
+        <Text style={STYLES.title}>{item.title}</Text>
         <TouchableOpacity></TouchableOpacity>
       </View>
 
@@ -42,8 +42,8 @@ export default function InsideNoteScreen({ route, navigation }) {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
       >
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentDescription}>
+        <View style={STYLES.contentContainer}>
+          <Text style={STYLES.contentDescription}>
             {activeTab === "original"
               ? item.content
               : item.summary
@@ -54,29 +54,29 @@ export default function InsideNoteScreen({ route, navigation }) {
       </ScrollView>
 
       {/* Sticky footer */}
-      <View style={styles.footer}>
+      <View style={STYLES.footer}>
         <TouchableOpacity
           style={[
-            styles.footerTab,
-            activeTab === "original" && styles.activeTab,
+            STYLES.footerTab,
+            activeTab === "original" && STYLES.activeTab,
           ]}
           onPress={() => setActiveTab("original")}
         >
           <Image
             source={require("../assets/icons/OrignalIcon.png")} // Replace with your original icon image file
             style={[
-              styles.footerIcon,
+              STYLES.footerIcon,
               activeTab === "original"
-                ? styles.activeIcon
-                : styles.inactiveIcon,
+                ? STYLES.activeIcon
+                : STYLES.inactiveIcon,
             ]}
           />
           <Text
             style={[
-              styles.footerText,
+              STYLES.footerText,
               activeTab === "original"
-                ? styles.activeTabText
-                : styles.inactiveTabText,
+                ? STYLES.activeTabText
+                : STYLES.inactiveTabText,
             ]}
           >
             Original
@@ -84,24 +84,24 @@ export default function InsideNoteScreen({ route, navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={[
-            styles.footerTab,
-            activeTab === "summary" && styles.activeTab,
+            STYLES.footerTab,
+            activeTab === "summary" && STYLES.activeTab,
           ]}
           onPress={() => setActiveTab("summary")}
         >
           <Image
             source={require("../assets/icons/summaryIcon.png")} // Replace with your summary icon image file
             style={[
-              styles.footerIcon,
-              activeTab === "summary" ? styles.activeIcon : styles.inactiveIcon,
+              STYLES.footerIcon,
+              activeTab === "summary" ? STYLES.activeIcon : STYLES.inactiveIcon,
             ]}
           />
           <Text
             style={[
-              styles.footerText,
+              STYLES.footerText,
               activeTab === "summary"
-                ? styles.activeTabText
-                : styles.inactiveTabText,
+                ? STYLES.activeTabText
+                : STYLES.inactiveTabText,
             ]}
           >
             Summary
@@ -112,7 +112,7 @@ export default function InsideNoteScreen({ route, navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
+const STYLES = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F7FE",

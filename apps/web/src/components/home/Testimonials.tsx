@@ -30,7 +30,7 @@ const TestimonialsData = [
   },
 ];
 
-const Testimonials = () => {
+export default function Testimonials() {
   return (
     <section
       id="reviews"
@@ -73,6 +73,4 @@ const Testimonials = () => {
       </div>
     </section>
   );
-};
-
-export default Testimonials;
+}

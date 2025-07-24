@@ -1,12 +1,14 @@
-const Checkbox = ({
-  isChecked,
-  checkHandler,
-  openaiKeySet,
-}: {
+type Props = {
   isChecked: boolean;
   checkHandler: () => void;
   openaiKeySet: boolean;
-}) => {
+};
+
+export default function Checkbox({
+  isChecked,
+  checkHandler,
+  openaiKeySet,
+}: Props) {
   return (
     <div className="relative flex  gap-x-3">
       <div className="flex items-start mt-[5px]">
@@ -45,6 +47,4 @@ const Checkbox = ({
       </div>
     </div>
   );
-};
-
-export default Checkbox;
+}

@@ -12,15 +12,13 @@ import {
   DropdownMenuTrigger,
 } from "./dropdown-menu";
 
-export function UserNav({
-  image,
-  name,
-  email,
-}: {
+type Props = {
   image: string;
   name: string;
   email: string;
-}) {
+};
+
+export function UserNav({ image, name, email }: Props) {
   const { signOut } = useClerk();
 
   return (

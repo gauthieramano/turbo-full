@@ -18,6 +18,7 @@ export class ErrorBoundary extends Component<
       errorText.includes("publishableKey")
     ) {
       const [clerkDashboardUrl] = errorText.match(/https:\S+/) ?? [];
+
       return {
         error: (
           <>

@@ -1,11 +1,8 @@
 import Link from "next/link";
 
-interface Props {
-  menuItems: {
-    title: string;
-    url: string;
-  }[];
-}
+type Props = {
+  menuItems: { title: string; url: string }[];
+};
 
 const Menu = ({ menuItems }: Props) => {
   return (

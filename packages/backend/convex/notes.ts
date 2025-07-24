@@ -3,16 +3,21 @@ import { v } from "convex/values";
 import { internal } from "../convex/_generated/api";
 import { Auth } from "convex/server";
 
-export const getUserId = async (ctx: { auth: Auth }) => {
-  return (await ctx.auth.getUserIdentity())?.subject;
-};
+type Args = { auth: Auth };
+
+export const getUserId = async (ctx: Args) =>
+  (await ctx.auth.getUserIdentity())?.subject;
 
 // Get all notes for a specific user
 export const getNotes = query({
   args: {},
+
   handler: async (ctx) => {
     const userId = await getUserId(ctx);
-    if (!userId) return null;
+
+    if (!userId) {
+      return null;
+    }
 
     const notes = await ctx.db
       .query("notes")
@@ -28,10 +33,16 @@ export const getNote = query({
   args: {
     id: v.optional(v.id("notes")),
   },
+
   handler: async (ctx, args) => {
     const { id } = args;
-    if (!id) return null;
+
+    if (!id) {
+      return null;
+    }
+
     const note = await ctx.db.get(id);
+
     return note;
   },
 });
@@ -43,9 +54,14 @@ export const createNote = mutation({
     content: v.string(),
     isSummary: v.boolean(),
   },
+
   handler: async (ctx, { title, content, isSummary }) => {
     const userId = await getUserId(ctx);
-    if (!userId) throw new Error("User not found");
+
+    if (!userId) {
+      throw new Error("User not found");
+    }
+
     const noteId = await ctx.db.insert("notes", { userId, title, content });
 
     if (isSummary) {
@@ -64,6 +80,7 @@ export const deleteNote = mutation({
   args: {
     noteId: v.id("notes"),
   },
+
   handler: async (ctx, args) => {
     await ctx.db.delete(args.noteId);
   },
