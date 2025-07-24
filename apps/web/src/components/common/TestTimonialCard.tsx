@@ -1,5 +1,6 @@
 import Image from "next/image";
-interface Props {
+
+type Props = {
   data: {
     feature?: boolean;
     review: string;
@@ -7,9 +8,9 @@ interface Props {
     name: string;
     designation: string;
   };
-}
+};
 
-const TestTimonialCard = ({ data }: Props) => {
+export default function TestTimonialCard({ data }: Props) {
   return (
     <div
       className={`max-w-[370px] w-full space-y-8 h-auto shrink-0 rounded-[20px] border-[1.5px] border-solid border-[#EAECF0] px-[35px] pt-14 pb-20 ${
@@ -67,6 +68,4 @@ const TestTimonialCard = ({ data }: Props) => {
       </div>
     </div>
   );
-};
-
-export default TestTimonialCard;
+}

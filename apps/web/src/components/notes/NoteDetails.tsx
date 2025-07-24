@@ -6,11 +6,11 @@ import { useQuery } from "convex/react";
 import ComplexToggle from "../home/ComplexToggle";
 import { useState } from "react";
 
-interface NoteDetailsProps {
+type Props = {
   noteId: Id<"notes">;
-}
+};
 
-const NoteDetails = ({ noteId }: NoteDetailsProps) => {
+export default function NoteDetails({ noteId }: Props) {
   const [isSummary, setIsSummary] = useState(false);
   const currentNote = useQuery(api.notes.getNote, { id: noteId });
 
@@ -31,6 +31,4 @@ const NoteDetails = ({ noteId }: NoteDetailsProps) => {
       </p>
     </div>
   );
-};
-
-export default NoteDetails;
+}

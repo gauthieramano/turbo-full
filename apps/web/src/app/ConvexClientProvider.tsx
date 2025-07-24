@@ -10,9 +10,7 @@ const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export default function ConvexClientProvider({
   children,
-}: {
-  children: ReactNode;
-}) {
+}: React.PropsWithChildren) {
   return (
     // NOTE: Once you get Clerk working you can remove this error boundary
     <ErrorBoundary>

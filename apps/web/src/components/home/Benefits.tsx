@@ -26,7 +26,7 @@ const benefits = [
   },
 ];
 
-const Benefits = () => {
+export default function Benefits() {
   return (
     <section id="Benefits" className="relative pointer-events-none">
       <Image
@@ -89,6 +89,4 @@ const Benefits = () => {
       </div>
     </section>
   );
-};
-
-export default Benefits;
+}

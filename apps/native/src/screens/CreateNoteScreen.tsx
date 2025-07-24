@@ -78,26 +78,26 @@ export default function CreateNoteScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <View style={STYLES.container}>
+      <View style={STYLES.header}>
         <Image
           source={require("../assets/icons/logo2small.png")} // Replace with your logo image file
-          style={styles.logo}
+          style={STYLES.logo}
         />
       </View>
 
-      <View style={styles.underHeaderContainer}>
+      <View style={STYLES.underHeaderContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
-            style={styles.arrowBack}
+            style={STYLES.arrowBack}
             source={require("../assets/icons/arrow-back.png")}
           />
         </TouchableOpacity>
 
-        <Text style={styles.title}>Create a New Note</Text>
+        <Text style={STYLES.title}>Create a New Note</Text>
         <TouchableOpacity>
           <Image
-            style={styles.arrowBack}
+            style={STYLES.arrowBack}
             source={require("../assets/icons/saveIcon.png")}
           />
         </TouchableOpacity>
@@ -107,37 +107,37 @@ export default function CreateNoteScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
       >
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Title</Text>
+        <View style={STYLES.inputContainer}>
+          <Text style={STYLES.inputLabel}>Title</Text>
           <TextInput
             value={noteTitle}
             onChangeText={(val: string) => setNoteTitle(val)}
-            style={styles.inputField}
+            style={STYLES.inputField}
             placeholder="Note Title"
             placeholderTextColor="#A9A9A9"
           />
-          <Text style={styles.inputLabel}>Content</Text>
+          <Text style={STYLES.inputLabel}>Content</Text>
           <TextInput
             value={noteContent}
             onChangeText={(val: string) => setNoteContent(val)}
-            style={[styles.inputField, styles.inputFieldMulti]}
+            style={[STYLES.inputField, STYLES.inputFieldMulti]}
             multiline
             placeholder="Note Comments"
             placeholderTextColor="#A9A9A9"
           />
         </View>
         <Text
-          style={{ ...styles.inputLabel, paddingHorizontal: 27, marginTop: 10 }}
+          style={{ ...STYLES.inputLabel, paddingHorizontal: 27, marginTop: 10 }}
         >
           AI Features
         </Text>
 
         {/* Advanced Summarization Section */}
-        <View style={styles.advancedSummarizationContainer}>
-          <View style={styles.advancedSummarizationCheckboxContainer}>
+        <View style={STYLES.advancedSummarizationContainer}>
+          <View style={STYLES.advancedSummarizationCheckboxContainer}>
             <TouchableOpacity
               onPress={toggleAdvancedSummarization}
-              style={openaiKeySet ? styles.checkbox : styles.checkboxDisabled}
+              style={openaiKeySet ? STYLES.checkbox : STYLES.checkboxDisabled}
               disabled={!openaiKeySet}
             >
               {isAdvancedSummarizationEnabled && (
@@ -149,11 +149,11 @@ export default function CreateNoteScreen({ navigation }) {
                 />
               )}
             </TouchableOpacity>
-            <Text style={styles.advancedSummarizationText}>
+            <Text style={STYLES.advancedSummarizationText}>
               Advanced Summarization {openaiKeySet ? "" : " (Disabled)"}
             </Text>
           </View>
-          <Text style={styles.advancedSummarizationSubtext}>
+          <Text style={STYLES.advancedSummarizationSubtext}>
             {openaiKeySet
               ? "Check this box if you want to generate summaries using AI."
               : "Please set OPENAI_API_KEY in your environment variables."}
@@ -162,20 +162,20 @@ export default function CreateNoteScreen({ navigation }) {
       </KeyboardAwareScrollView>
       <Animated.View
         style={[
-          styles.newNoteButtonContainer,
+          STYLES.newNoteButtonContainer,
           { transform: [{ translateY: footerTranslateY }] },
         ]}
       >
-        <TouchableOpacity onPress={createUserNote} style={styles.newNoteButton}>
+        <TouchableOpacity onPress={createUserNote} style={STYLES.newNoteButton}>
           <AntDesign name="pluscircle" size={20} color="#fff" />
-          <Text style={styles.newNoteButtonText}>Create a New Note</Text>
+          <Text style={STYLES.newNoteButtonText}>Create a New Note</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const STYLES = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const FooterHero = () => {
+export default function FooterHero() {
   return (
     <div className="bg-primary">
       <div className="flex flex-wrap md:flex-nowrap justify-between container py-20 px-6 sm:px-0">
@@ -31,6 +31,4 @@ const FooterHero = () => {
       </div>
     </div>
   );
-};
-
-export default FooterHero;
+}

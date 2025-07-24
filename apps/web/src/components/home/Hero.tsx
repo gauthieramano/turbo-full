@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
+export default function Hero() {
   return (
     <section className="bg_image">
       <div className="container py-16 sm:py-36 px-6 sm:px-0">
@@ -47,6 +47,4 @@ const Hero = () => {
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

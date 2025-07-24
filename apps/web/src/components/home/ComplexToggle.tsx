@@ -5,13 +5,12 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ComplexToggle({
-  setIsSummary,
-  isSummary,
-}: {
+type Props = {
   setIsSummary: (value: boolean) => void;
   isSummary: boolean;
-}) {
+};
+
+export default function ComplexToggle({ setIsSummary, isSummary }: Props) {
   return (
     <Switch.Group as="div" className="flex items-center">
       <Switch.Label as="span" className="mr-3 text-sm">
