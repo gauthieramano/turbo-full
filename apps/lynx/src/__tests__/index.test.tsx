@@ -8,24 +8,24 @@ import { expect, test, vi } from "vitest";
 import { App } from "../App.js";
 
 test("App", async () => {
-	const cb = vi.fn();
+  const cb = vi.fn();
 
-	render(
-		<App
-			onMounted={() => {
-				cb(`__MAIN_THREAD__: ${__MAIN_THREAD__}`);
-			}}
-		/>,
-	);
-	expect(cb).toBeCalledTimes(1);
-	expect(cb.mock.calls).toMatchInlineSnapshot(`
+  render(
+    <App
+      onMounted={() => {
+        cb(`__MAIN_THREAD__: ${__MAIN_THREAD__}`);
+      }}
+    />,
+  );
+  expect(cb).toBeCalledTimes(1);
+  expect(cb.mock.calls).toMatchInlineSnapshot(`
     [
       [
         "__MAIN_THREAD__: false",
       ],
     ]
   `);
-	expect(elementTree.root).toMatchInlineSnapshot(`
+  expect(elementTree.root).toMatchInlineSnapshot(`
     <page>
       <view>
         <view
@@ -87,10 +87,10 @@ test("App", async () => {
       </view>
     </page>
   `);
-	const { findByText } = getQueriesForElement(elementTree.root!);
-	const element = await findByText("Tap the logo and have fun!");
-	expect(element).toBeInTheDocument();
-	expect(element).toMatchInlineSnapshot(`
+  const { findByText } = getQueriesForElement(elementTree.root!);
+  const element = await findByText("Tap the logo and have fun!");
+  expect(element).toBeInTheDocument();
+  expect(element).toMatchInlineSnapshot(`
     <text
       class="Description"
     >
