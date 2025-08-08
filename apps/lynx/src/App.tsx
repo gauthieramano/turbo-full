@@ -2,64 +2,64 @@ import { useCallback, useEffect, useState } from "@lynx-js/react";
 
 import "./App.css";
 
-import { api } from "@packages/backend/convex/_generated/api";
-import { useQuery } from "convex/react";
 import arrow from "./assets/arrow.png";
 import lynxLogo from "./assets/lynx-logo.png";
 import reactLynxLogo from "./assets/react-logo.png";
+import ConvexClientProvider from "./ConvexClientProvider";
+import ConvexReactUseQuery from "./ConvexReactUseQuery";
 
 export function App(props: { onMounted?: () => void }) {
-	const [alterLogo, setAlterLogo] = useState(false);
+  const [alterLogo, setAlterLogo] = useState(false);
 
-	const allNotes = useQuery(api.notes.getNotes2) || [];
 
-	useEffect(() => {
-		console.info("Hello, ReactLynx");
-		props.onMounted?.();
-	}, []);
+  useEffect(() => {
+    console.info("Hello, ReactLynx");
+    props.onMounted?.();
+  }, []);
 
-	const onTap = useCallback(() => {
-		"background only";
-		setAlterLogo((prevAlterLogo) => !prevAlterLogo);
-	}, []);
+  const onTap = useCallback(() => {
+    "background only";
+    setAlterLogo((prevAlterLogo) => !prevAlterLogo);
+  }, []);
 
-	return (
-		<view>
-			<view className="Background" />
-			<view className="App">
-				<view className="Banner">
-					<view className="Logo" bindtap={onTap}>
-						{alterLogo ? (
-							<image src={reactLynxLogo} className="Logo--react" />
-						) : (
-							<image src={lynxLogo} className="Logo--lynx" />
-						)}
-					</view>
-					<text className="Title">React</text>
-					<text className="Subtitle">on Lynx</text>
-					{allNotes.map((note) => (
-						<text className="Subtitle">{note.title}</text>
-					))}
-					<text className="Subtitle">by Gauthier</text>
-				</view>
-				<view className="Content">
-					<image src={arrow} className="Arrow" />
-					<text className="Description">Tap the logo and have fun!</text>
-					<text className="Hint">
-						Edit
-						<text
-							style={{
-								fontStyle: "italic",
-								color: "rgba(255, 255, 255, 0.85)",
-							}}
-						>
-							{" src/App.tsx "}
-						</text>
-						to see updates!
-					</text>
-				</view>
-				<view style={{ flex: 1 }}></view>
-			</view>
-		</view>
-	);
+  return (
+
+    <ConvexClientProvider>
+      <view>
+        <view className="Background" />
+        <view className="App">
+          <view className="Banner">
+            <view className="Logo" bindtap={onTap}>
+              {alterLogo ? (
+                <image src={reactLynxLogo} className="Logo--react" />
+              ) : (
+                <image src={lynxLogo} className="Logo--lynx" />
+              )}
+            </view>
+            <text className="Title">React</text>
+            <text className="Subtitle">on Lynx</text>
+            <ConvexReactUseQuery />
+            <text className="Subtitle">by Gauthier</text>
+          </view>
+          <view className="Content">
+            <image src={arrow} className="Arrow" />
+            <text className="Description">Tap the logo and have fun!</text>
+            <text className="Hint">
+              Edit
+              <text
+                style={{
+                  fontStyle: "italic",
+                  color: "rgba(255, 255, 255, 0.85)",
+                }}
+              >
+                {" src/App.tsx "}
+              </text>
+              to see updates!
+            </text>
+          </view>
+          <view style={{ flex: 1 }}></view>
+        </view>
+      </view>
+    </ConvexClientProvider>
+  );
 }
