@@ -5,8 +5,6 @@ import "./App.css";
 import arrow from "./assets/arrow.png";
 import lynxLogo from "./assets/lynx-logo.png";
 import reactLynxLogo from "./assets/react-logo.png";
-import ConvexClientProvider from "./ConvexClientProvider";
-import ConvexReactUseQuery from "./ConvexReactUseQuery";
 
 export function App(props: { onMounted?: () => void }) {
   const [alterLogo, setAlterLogo] = useState(false);
@@ -24,7 +22,6 @@ export function App(props: { onMounted?: () => void }) {
 
   return (
 
-    <ConvexClientProvider>
       <view>
         <view className="Background" />
         <view className="App">
@@ -38,7 +35,6 @@ export function App(props: { onMounted?: () => void }) {
             </view>
             <text className="Title">React</text>
             <text className="Subtitle">on Lynx</text>
-            <ConvexReactUseQuery />
             <text className="Subtitle">by Gauthier</text>
           </view>
           <view className="Content">
@@ -60,6 +56,5 @@ export function App(props: { onMounted?: () => void }) {
           <view style={{ flex: 1 }}></view>
         </view>
       </view>
-    </ConvexClientProvider>
   );
 }
